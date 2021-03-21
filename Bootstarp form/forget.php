@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://iconarchive.com/download/i66645/designbolts/free-valentine-heart/Heart.ico">
     <title>Document</title>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
@@ -31,29 +32,13 @@
             margin-left: -15px;
         }
     </style>
-    
-    <!-- PHP Validation -->]
-    <?php
-
-        if(isset($_POST{'submit'})){
-
-            if( isset($email) || isset($pass)){
-
-                $msg =  "Data Stable";
-    
-            }else{     
-                $msg = "All feilds are required";
-            }
-        }
-    
-    ?>
 </head>
 <body>
-    <section class="form no-gutters py-4">
-        <div class="container">
+    <section class="form py-5 mx-auto">
+        <div class="container py-5">
             <div class="row">
                 <div class="col-lg-5">
-                    <img src="https://image.freepik.com/free-vector/access-control-system-abstract-concept_335657-3180.jpg" alt="view" class="img-fluid vector">
+                    <img src="https://img.freepik.com/free-vector/forgot-password-concept-illustration_114360-1123.jpg?size=338&ext=jpg" alt="view" class="img-fluid vector">
 
                 </div>
                 <div class="col-lg-7">

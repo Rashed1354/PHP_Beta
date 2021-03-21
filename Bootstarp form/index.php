@@ -32,21 +32,41 @@
         }
     </style>
     
-    <!-- PHP Validation -->]
+    <!-- PHP Validation -->
     <?php
 
-        if(isset($_POST{'submit'})){
+        $email_field = false;
 
-            if( isset($email) || isset($pass)){
+        // from value get 
+        if(isset($_POST['submit'])){
 
-                $msg =  "Data Stable";
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+           
+
+            if( empty($email) || empty($password)){
+
+                $msg = "*All feilds are required";
+                $email_field = true;
     
             }else{     
-                $msg = "All feilds are required";
+                $msg =  "Data Stable";
+                
+            }
+
+            if(empty($email)){
+                $err['email'] = "<p style=\"color:red\">*requied</p>";
+            };
+            
+            if(empty($password)){
+                $err['pass'] = "<p style=\"color:red\">*requied</p>";
             }
         }
+
+        
     
     ?>
+    
 </head>
 <body>
     <section class="form no-gutters py-4">
@@ -56,22 +76,50 @@
                     <img src="https://image.freepik.com/free-vector/access-control-system-abstract-concept_335657-3180.jpg" alt="view" class="img-fluid vector">
 
                 </div>
+
                 <div class="col-lg-7">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Intel_logo_%282020%2C_dark_blue%29.svg/1200px-Intel_logo_%282020%2C_dark_blue%29.svg.png" alt="" class="img-fluid my-5 logo" height="100px" width="100px">
                     <h2 class="h6 font-weight-bold py-0"> Login into your account</h2>
                     
+                    <?php
+
+                        if(isset($msg)){
+                            if($msg == "*All feilds are required"){
+                                echo "<div class=\"col-7 alert alert-danger\">$msg <button class=\"close\" data-dismiss=\"alert\">&times;</button></div>";
+                            }else{
+                                echo "<div class=\"col-7 alert alert-success\">$msg</div>";
+                            }
+                                
+                        };
+
+                        
+                    ?>
                   
 
                     <form action="" method="POST">
                         <from class="form-row">
                             <div class="col-lg-7">
-                                <input type="email" name="email" placeholder="Email or Username" class="form-control py-3">
+                                <!-- email -->
+                                <input type="email" name="email" placeholder="Email or Username" class="form-control py-3" value="<?php 
+                                if($email_field == true){ echo $email;} ?>">
+                                <?php
+                                    if (isset($err["email"])){
+                                        echo $err["email"];
+                                    }
+                                ?>
+                            <!--Password-->
                             </div>
                             <div class="col-lg-7 py-3">
-                                <input type="password" name="pass" placeholder="Password" class="form-control py-3">
+                                <input type="password" name="password" placeholder="Password" class="form-control py-3">
+                                <?php
+                                    if (isset($err["pass"])){
+                                        echo $err["pass"];
+                                    }
+                            ?>
                             </div>
+                           
                             <div class="col-lg-7">
-                                <button type="submit" class="btn btn-primary px-7 py-lg-2" name="submit">Sign in</button>                         
+                                <button type="submit" class="btn btn-primary px-7 py-lg-2" name="submit" value="submit">Sign in</button>                         
                             </div>
                     </form>
                     <div class="col-lg-7">
