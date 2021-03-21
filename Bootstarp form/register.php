@@ -36,18 +36,65 @@
 
     <!-- PHP VALIDATION -->
     <?PHP
-      if(isset($_POST['submit'])){
-         $fristName = $_POST['frist-name'];
-         $lastName = $_POST["last-name"];
-         $number = $_POST["cell"];
-         $age = $_POST["age"];
-         $email = $_POST['email'];
-         $password = $_POST['pass'];
-         $photo = $_FILES['profile_pic'];
 
-         echo $file = $photo["name"];
+        // veriables
+        $ae = false;
+            
+      if(isset($_POST['submit'])){
+        $fristName = $_POST['frist-name'];
+        $lastName = $_POST["last-name"];
+        $number = $_POST["cell"];
+        $age = $_POST["age"];
+        $email = $_POST['email'];
+        $password = $_POST['pass'];
+        $file= $_FILES['profile_pic'];
+        $photo = $file["name"];
+        $r_pass = $_POST['r_pass'];
+
+         if( empty($fristName) & empty($lasttName) & empty($number) & empty($age) & empty($email) & empty($password) & empty($photo)){
+        
+            $msg = "<div class=\"col-7 alert alert-danger\"> * All Fields are required <button class=\"close\" data-dismiss=\"alert\">&times;</button></div>";
+            $ae = true;
+          }else if($ae == false){
+
+            if( empty($fristName)){
+                $err['fstName'] = "<div class=\"col-7 alert alert-danger\"> * Frist Name Required <button class=\"close\" data-dismiss=\"alert\">&times;</button></div>";
+              }
+              if( empty($lastName)){
+                $err['lstname'] = "<div class=\"col-7 alert alert-danger\"> * last Name Required <button class=\"close\" data-dismiss=\"alert\">&times;</button></div>";
+                
+    
+              } if( empty($number)){
+                $err['number'] = "<div class=\"col-7 alert alert-danger\"> * Number Required  <button class=\"close\" data-dismiss=\"alert\">&times;</button></div>";
+               
+    
+              }if( empty($age)){
+                $err['age'] = "<div class=\"col-7 alert alert-danger\"> * Age Required  <button class=\"close\" data-dismiss=\"alert\">&times;</button></div>";
+                
+    
+              }if( empty($email)){
+                $err['email'] = "<div class=\"col-7 alert alert-danger\"> * Email Required  <button class=\"close\" data-dismiss=\"alert\">&times;</button></div>";
+                
+    
+              }if( empty($password)){
+                $err['pass'] = "<div class=\"col-7 alert alert-danger\"> * password Required  <button class=\"close\" data-dismiss=\"alert\">&times;</button></div>";
+                
+    
+              }if( empty($photo)){
+                $err['photo'] = "<div class=\"col-7 alert alert-danger\"> * A Profile Photo Required  <button class=\"close\" data-dismiss=\"alert\">&times;</button></div>";
+                
+              }if($password !== $r_pass ){
+                $misMatch = "<div class=\"co-5 mx-auto alert alert-danger\"> *Password Not matched <button class=\"close\" data-dismiss=\"alert\">&times;</button></div>";
+              }else{
+
+              }
+          }
+         
+
+          
       }
 
+     
     ?>
     
 
@@ -64,12 +111,49 @@
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Intel_logo_%282020%2C_dark_blue%29.svg/1200px-Intel_logo_%282020%2C_dark_blue%29.svg.png" alt="" class="img-fluid my-5 logo" height="100px" width="100px">
 
                     <h2 class="h6 font-weight-bold py-0"> Sign Up to your new account</h2>
+
+                    <?php
+
+                        if(isset($msg)){
+                            echo $msg;   
+                        }
+                        if(isset($err['fstName'])){
+                            echo $err['fstName'];   
+                        }
+                        if(isset($err['lstName'])){
+                            echo $err['lstName'];   
+                        }
+                        if(isset($err['number'])){
+                            echo $err['number'];   
+                        }
+                        
+                        if(isset($err['age'])){
+                            echo $err['age'];   
+                        }
+                        
+                        if(isset($err['email'])){
+                            echo $err['email'];   
+                        }
+                        
+                        if(isset($err['pass'])){
+                            echo $err['pass'];   
+                        }
+                        if(isset($err['photo'])){
+                            echo $err['photo'];   
+                        }
+                        
+
+
+
+
+                    ?>
+                    <!-- form -->
                     <form action="" method="POST" enctype="multipart/form-data">
-                      <div class="form-row">
+                      <div class="row">
                         <div class="col-lg-7">
                             <input type="text" name="frist-name" placeholder="Frist Name" class="form-control">
                         </div>
-                        <div class="col-lg-7">
+                        <div class="col-7">
                             <input type="text" name="last-name" placeholder="Last Name" class="form-control">
                         </div>
                         <div class="col-lg-7">
@@ -81,8 +165,12 @@
                         <div class="col-lg-7">
                             <input type="email" name="email" placeholder="Email" class="form-control">
                         </div>
+                        <?php if(isset($misMatch)){echo "$misMatch";} ?>
                         <div class="col-lg-7">
                             <input type="password" name="pass" placeholder="Password" class="form-control mb-3">
+                        </div>
+                        <div class="col-lg-7">
+                            <input type="r_password" name="r_pass" placeholder="Repeat Password" class="form-control mb-3">
                         </div>
                         <div class="col-lg-7">
                             <p>Your Image</p> 
