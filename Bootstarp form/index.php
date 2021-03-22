@@ -73,7 +73,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-5">
-                    <img src="https://image.freepik.com/free-vector/access-control-system-abstract-concept_335657-3180.jpg" alt="view" class="img-fluid vector">
+                    <img src="img\login.jpg" alt="view" class="img-fluid vector">
 
                 </div>
 

@@ -38,7 +38,7 @@
         <div class="container py-5">
             <div class="row">
                 <div class="col-lg-5">
-                    <img src="https://img.freepik.com/free-vector/forgot-password-concept-illustration_114360-1123.jpg?size=338&ext=jpg" alt="view" class="img-fluid vector">
+                    <img src="img\forget_password.png" alt="view" class="img-fluid vector">
 
                 </div>
                 <div class="col-lg-7">
