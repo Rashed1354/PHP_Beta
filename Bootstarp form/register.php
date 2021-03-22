@@ -84,13 +84,16 @@
                 $err['photo'] = "<div class=\"col-7 alert alert-danger\"> * A Profile Photo Required  <button class=\"close\" data-dismiss=\"alert\">&times;</button></div>";
                 
               }if($password !== $r_pass ){
-                $misMatch = "<div class=\"co-5 mx-auto alert alert-danger\"> *Password Not matched <button class=\"close\" data-dismiss=\"alert\">&times;</button></div>";
+                $misMatch = "<div class=\"col-7 alert alert-danger\"> *Password Not matched <button class=\"close\" data-dismiss=\"alert\">&times;</button></div>";
               }else{
+                    echo "success";
 
+                    header("Location: messages\Registration_success.html");
+                    exit();
               }
           }
          
-
+          
           
       }
 
@@ -104,7 +107,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-5">
-                    <img src="https://cdn0.iconfinder.com/data/icons/academics-glyph-black/2048/Register-512.png" alt="view" class="img-fluid m-auto pt-4">
+                    <img src="img\Register.png" alt="view" class="img-fluid m-auto pt-5">
 
                 </div>
                 <div class="col-lg-7">
@@ -143,7 +146,9 @@
                         }
                         
 
-
+                       if(isset($misMatch)){
+                           echo "$misMatch";
+                        }
 
 
                     ?>
@@ -157,7 +162,7 @@
                             <input type="text" name="last-name" placeholder="Last Name" class="form-control">
                         </div>
                         <div class="col-lg-7">
-                            <input type="text" name="cell" placeholder="Phone Number" class="form-control">
+                            <input type="number" name="cell" placeholder="Phone Number" class="form-control">
                         </div>
                         <div class="col-lg-7">
                             <input type="number" name="age" placeholder="Age" class="form-control">
@@ -165,17 +170,19 @@
                         <div class="col-lg-7">
                             <input type="email" name="email" placeholder="Email" class="form-control">
                         </div>
-                        <?php if(isset($misMatch)){echo "$misMatch";} ?>
+                       
                         <div class="col-lg-7">
-                            <input type="password" name="pass" placeholder="Password" class="form-control mb-3">
+                            <input type="password" id="password" name="pass" placeholder="Password" class="form-control">
+                            <input type="checkbox" onclick="myFunction()" class="m-2"> Show Password
                         </div>
                         <div class="col-lg-7">
-                            <input type="r_password" name="r_pass" placeholder="Repeat Password" class="form-control mb-3">
+                            <input type="password" id="r_pass" name="r_pass" placeholder="Repeat Password" max="100" class="form-control">
+                            <input type="checkbox" onclick="SFunction()" class="m-2"> Show Password
                         </div>
                         <div class="col-lg-7">
                             <p>Your Image</p> 
                             <label for="profile_pic" style="cursor: pointer;">
-                              <img src="" alt="" height="40px" width="40px">
+                              <img src="img\upload.png" alt="" height="40px" width="40px">
                             </label>
                             <input type="file" name="profile_pic" class="form-control" id="profile_pic" style="display: none;">
                         </div>
@@ -192,5 +199,8 @@
             </div>
         </div> 
     </section>
+
+    <script src="functions.js"></script></script>
+
 </body>
 </html>

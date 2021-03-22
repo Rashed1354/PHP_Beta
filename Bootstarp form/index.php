@@ -110,7 +110,8 @@
                             <!--Password-->
                             </div>
                             <div class="col-lg-7 py-3">
-                                <input type="password" name="password" placeholder="Password" class="form-control py-3">
+                                <input type="password" name="password" placeholder="Password" id="pass" class="form-control py-3">
+                                <input type="checkbox" onclick="S2Function()" class="m-2"> Show Password
                                 <?php
                                     if (isset($err["pass"])){
                                         echo $err["pass"];
@@ -131,6 +132,7 @@
             </div>
         </div> 
     </section>
+    <script src="functions.js"></script>
 </body>
 </html>
 
