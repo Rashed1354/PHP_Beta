@@ -27,3 +27,8 @@ function S2Function() {
         x.type = "password";
     }
 }
+
+$('input[name="profile_pic"]').change(function(e) {
+    let file_url = URL.createObjectURL(e.target.files[0]); 
+    $('img#upload_preview').attr('src', file_url); 
+}); 

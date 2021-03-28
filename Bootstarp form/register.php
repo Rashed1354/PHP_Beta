@@ -29,6 +29,10 @@
                 border-bottom-left-radius: 30px ;
                 margin-left: -15px;
             }
+            #upload_preview{
+                border: 1px solid #000;
+                border-radius: 50%;
+            }
         </style>
 
     </head>
@@ -106,16 +110,18 @@
                 }else if(in_array($extension,['jpg','png' ,'gif','jpeg','webp']) == false){
 
                     $err['file_err'] = "<div class=\"col-7 alert alert-danger\"> * File type not supported <button class=\"close\" data-dismiss=\"alert\">&times;</button></div>";
+                }else{
+                    move_uploaded_file( $tmp_location,'media/photos'. $unique_photo_name);
                 }
                
             }else{
-                move_uploaded_file( $tmp_location,'media/photos'. $unique_photo_name);
                 header("Location: messages\Registration_success.html");
                 exit();
+
                 
             }; 
             
-           
+            
 
         }     
         ?>
@@ -208,9 +214,10 @@
                             <div class="col-lg-7">
                                 <p>Your Image</p> 
                                 <label for="profile_pic" style="cursor: pointer;">
-                                <img src="img\upload.png" alt="" height="40px" width="40px">
+                                <img src="img\upload.png" alt="" id="upload_preview" height="100px" width="100px">
                                 </label>
                                 <input type="file" name="profile_pic" class="form-control" id="profile_pic" style="display: none;">
+                                <img class="flex" src="" alt="" height="150px" weight='150px'>
                             </div>
                             <div class="col-lg-7">
                                 <button type="submit" class="btn btn-primary px-7 py-lg-2" name="submit">Sign up </button>                         
